@@ -15,7 +15,7 @@ repository code.
 
     using MongoQ;
     
-    public class MyRepo : MongoQ.MongoQRepo<MyEntity>
+    public class MyRepo : MongoQRepo<MyEntity>
     {
         public MyRepo() : base("collectionName") { }
 
