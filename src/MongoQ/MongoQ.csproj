@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>dotnetKyle</Authors>
+    <Description>Quickly add the MongoDB C# Driver to a dotnet project with some helpful additions to get started quicker.</Description>
+    <Copyright>2021 dotnetKyle</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/dotnetKyle/mongodb-quick-repo/blob/stable/README.md</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/dotnetKyle/mongoQ</RepositoryUrl>
+    <PackageTags>Mongo, MongoDB, MongoDB.Driver</PackageTags>
+    <PackageReleaseNotes />
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
+  </ItemGroup>
+
+</Project>
