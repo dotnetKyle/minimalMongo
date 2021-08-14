@@ -2,15 +2,46 @@
 
 The Q stands for quick
 
-Quickly add the MongoDB C# Driver to a dotnet project with some helpful additions to get started quicker.
+Quickly add the MongoDB C# Driver to a dotnet 
+project with some helpful additions to get 
+started quicker.
+
+## Usage:
+
+Creating a repository is very easy with MongoQ. 
+MongoQ will setup your collection for you in a 
+standard, repeatable way so you can focus on your 
+repository code.
+
+    using MongoQ;
+    
+    public class MyRepo : MongoQ.MongoQRepo<MyEntity>
+    {
+        public MyRepo() : base("collectionName") { }
+
+        public MyEntity FindOne(ObjectId id)
+        {
+            return _collection
+                .Find(e => e.Id == id)
+                .FirstOrDefault();
+        }
+    }
 
 ## Getting started
 
 ### Installation
 
-Download the Nuget Package
+Add the Nuget Package.
 
-### Configure your mongo database
+For ASP.NET:
+
+`Install-Package MongoQ.AspNetCore`
+
+Generic C#:
+
+`Install-Package MongoQ`
+
+### First, Configure your mongo database
 
 See below, configuration is different per-environment to conform to conventions of your framework.
 

@@ -9,8 +9,10 @@
     <PackageProjectUrl>https://github.com/dotnetKyle/mongodb-quick-repo/blob/stable/README.md</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dotnetKyle/mongoQ</RepositoryUrl>
     <PackageTags>Mongo, MongoDB, MongoDB.Driver</PackageTags>
-    <PackageReleaseNotes />
+    <PackageReleaseNotes>First iteration, added support for a quick repo, cluster configuration, database settings, collection settings.</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>0.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
