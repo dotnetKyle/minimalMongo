@@ -20,10 +20,12 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore src/MongoQ.sln
     - name: Build
-      run: dotnet build src/MongoQ.sln --no-restore
+      run: dotnet build src/MongoQ.sln -c Release --no-restore
     - name: Test
       run: dotnet test src/MongoQ.Tests/MongoQ.Tests.csproj --no-build
-    - name: Pack MongoQ
+    - name: Pack MongoQ Nuget
       run: dotnet pack src/MongoQ/MongoQ.csproj --no-build -p:PackageVersion=0.1.${{github.run_number}}
+    - name: Push Nuget
+      run: dotnet nuget push src/MongoQ/bin/Release/MongoQ.0.1.${{github.run_number}}.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
    # - name: Test
    #   run: dotnet test --no-build --verbosity normal
