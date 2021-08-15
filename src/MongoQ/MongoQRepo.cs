@@ -19,6 +19,11 @@ namespace MongoQ
             var connString = MongoQConfiguration.MongoDbConnString;
             var dbName = MongoQConfiguration.MongoDbName;
 
+            if (string.IsNullOrWhiteSpace(connString))
+                throw new ArgumentNullException(nameof(MongoQConfiguration.MongoDbConnString), "You must configure a MongoDB connection string.");
+            if (string.IsNullOrWhiteSpace(dbName))
+                throw new ArgumentNullException(nameof(MongoQConfiguration.MongoDbName), "You must configure a MongoDB database name.");
+
             // create the client
             var settings = MongoClientSettings.FromConnectionString(connString);
             settings.ClusterConfigurator = MongoQConfiguration.ClusterConfig;

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Linq.Expressions;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using MongoDB.Driver.Core.Configuration;
+using System;
 
 namespace MongoQ
 {
@@ -13,10 +12,10 @@ namespace MongoQ
         /// multiple MongoClients, ensure that your delegates are all using the 
         /// same address if the intent is to share connection pools.
         /// </summary>
-        internal static Action<ClusterBuilder> ClusterConfig { get; private set; } = (ClusterBuilder cb) => { };
-        internal static MongoDatabaseSettings MongoDbSettings { get; private set; }
-        internal static string MongoDbName { get; private set; }
-        internal static string MongoDbConnString { get; private set; }
+        internal static Action<ClusterBuilder> ClusterConfig { get; set; } = (ClusterBuilder cb) => { };
+        internal static MongoDatabaseSettings MongoDbSettings { get; set; }
+        internal static string MongoDbName { get; set; }
+        internal static string MongoDbConnString { get; set; }
 
         public static void AddMongoQDbName(string dbName)
         {
