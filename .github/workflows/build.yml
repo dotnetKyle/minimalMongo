@@ -1,4 +1,4 @@
-name: .NET
+name: Build
 
 on:
   push:
@@ -23,5 +23,7 @@ jobs:
       run: dotnet build src/MongoQ.sln --no-restore
     - name: Test
       run: dotnet test src/MongoQ.Tests/MongoQ.Tests.csproj --no-build
+    - name: Pack MongoQ
+      run: dotnet pack src/MongoQ/MongoQ.csproj --no-build -p:PackageVersion=0.1.${{github.run_number}}
    # - name: Test
    #   run: dotnet test --no-build --verbosity normal
