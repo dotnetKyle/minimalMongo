@@ -1,9 +1,7 @@
-name: Build
+name: CD-Build
 
 on:
   push:
-    branches: [ stable ]
-  pull_request:
     branches: [ stable ]
 
 jobs:

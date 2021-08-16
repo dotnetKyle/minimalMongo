@@ -1,0 +1,33 @@
+name: CI-Build
+
+on:
+  push:
+    branches: [ '!stable' ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+    - name: Restore dependencies
+      run: dotnet restore src/MongoQ.sln
+    - name: Build
+      run: dotnet build src/MongoQ.sln -c Release --no-restore
+    - name: Test
+      run: dotnet test src/MongoQ.Tests/MongoQ.Tests.csproj -c Release --no-build
+    - name: Pack MongoQ Nuget
+      run: dotnet pack src/MongoQ/MongoQ.csproj -c Release --no-build -p:PackageVersion=0.1.${{github.run_number}}-alpha
+    - name: Push MongoQ Nuget
+      run: dotnet nuget push src/MongoQ/bin/Release/MongoQ.0.1.${{github.run_number}}-alpha.nupkg  --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
+    - name: Pack MongoQ.AspNetCore Nuget
+      run: dotnet pack src/MongoQ.AspNetCore/MongoQ.AspNetCore.csproj -c Release --no-build -p:PackageVersion=0.1.${{github.run_number}}-alpha
+    - name: Push MongoQ.AspNetCore Nuget
+      run: dotnet nuget push src/MongoQ.AspNetCore/bin/Release/MongoQ.AspNetCore.0.1.${{github.run_number}}-alpha.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
+   # - name: Test
+   #   run: dotnet test --no-build --verbosity normal

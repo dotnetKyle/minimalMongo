@@ -12,7 +12,6 @@
     <PackageReleaseNotes>First iteration, added support for a quick repo, cluster configuration, database settings, collection settings.</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
     <Version>0.0.0</Version>
   </PropertyGroup>
 
