@@ -13,12 +13,16 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
+        
     - name: Restore dependencies
       run: dotnet restore src/MongoQ.sln
+      
     - name: Build
       run: dotnet build src/MongoQ.sln -c Release --no-restore
+      
     - name: Test
       run: dotnet test src/MongoQ.Tests/MongoQ.Tests.csproj -c Release --no-build
+      
     - name: Pack MongoQ Nuget Alpha
       run: dotnet pack src/MongoQ/MongoQ.csproj -c Release --no-build -p:PackageVersion=0.1.${{github.run_id}}-alpha
     - name: Pack MongoQ Nuget
@@ -31,13 +35,37 @@ jobs:
     - name: Publish MongoQ Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: source
+        name: Nugets
         path: src/**/bin/**/*.nupkg
         
-    - name: Test Environment
-      run: |
-        echo "${{ env.GITHUB_ACTION }}"
-        echo "${{ env.GITHUB_ACTION }}"
+  integration:
+    needs: build
+    name: Deploy Nuget-alpha packages
+    environment:
+      name: Integration
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download nugets
+      uses: actions/download-artifact@v2
+      with:
+        name: Nugets
+    - name: Say Environment Name
+      run: echo 'Integration'
+
+  production:
+    needs: build
+    name: Deploy Nuget packages to production
+    environment:
+      name: Production
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download nugets
+      uses: actions/download-artifact@v2
+      with:
+        name: Nugets
+    - name: Say Environment Name
+      run: echo 'Production'
+
 #    - name: Push MongoQ Nuget
 #      run: dotnet nuget push src/MongoQ/bin/Release/MongoQ.0.1.${{github.run_id}}.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
 #    - name: Push MongoQ.AspNetCore Nuget
