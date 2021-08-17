@@ -2,7 +2,7 @@ name: CD-Build
 
 on:
   push:
-    branches: [ stable ]
+    branches: [ '*' ]
 
 jobs:
   build:
@@ -53,7 +53,7 @@ jobs:
       run: echo 'Integration'
 
   production:
-    needs: build
+    needs: integration
     name: Deploy Nuget packages to production
     environment:
       name: Production
