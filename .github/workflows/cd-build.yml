@@ -32,7 +32,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: source
-        path: src/**/bin/*.nupkg
+        path: /**/bin/**/*.nupkg
         
     - name: Test Environment
       run: |
