@@ -1,8 +1,8 @@
-name: CD-Build-Gate
+name: CI-Build-Gate
 
 on:
   pull_request:
-    branches: [ stable ]
+    branches: [ '*' ]
 
 jobs:
   build:
@@ -21,9 +21,3 @@ jobs:
       run: dotnet build src/MongoQ.sln -c Release --no-restore
     - name: Test
       run: dotnet test src/MongoQ.Tests/MongoQ.Tests.csproj -c Release --no-build
-    - name: Pack MongoQ Nuget
-      run: dotnet pack src/MongoQ/MongoQ.csproj -c Release --no-build -p:PackageVersion=0.1.${{github.run_id}}
-    - name: Pack MongoQ.AspNetCore Nuget
-      run: dotnet pack src/MongoQ.AspNetCore/MongoQ.AspNetCore.csproj -c Release --no-build -p:PackageVersion=0.1.${{github.run_id}}
-   # - name: Test
-   #   run: dotnet test --no-build --verbosity normal
