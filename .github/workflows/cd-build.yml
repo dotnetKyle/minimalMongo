@@ -6,9 +6,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -21,14 +19,27 @@ jobs:
       run: dotnet build src/MongoQ.sln -c Release --no-restore
     - name: Test
       run: dotnet test src/MongoQ.Tests/MongoQ.Tests.csproj -c Release --no-build
+    - name: Pack MongoQ Nuget Alpha
+      run: dotnet pack src/MongoQ/MongoQ.csproj -c Release --no-build -p:PackageVersion=0.1.${{github.run_id}}-alpha
     - name: Pack MongoQ Nuget
       run: dotnet pack src/MongoQ/MongoQ.csproj -c Release --no-build -p:PackageVersion=0.1.${{github.run_id}}
-    - name: Test Environment
-      run: echo "${{ env.NAME }}"
-#    - name: Push MongoQ Nuget
-#      run: dotnet nuget push src/MongoQ/bin/Release/MongoQ.0.1.${{github.run_id}}.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
+    - name: Pack MongoQ.AspNetCore Nuget Alpha
+      run: dotnet pack src/MongoQ.AspNetCore/MongoQ.AspNetCore.csproj -c Release --no-build -p:PackageVersion=0.1.${{github.run_id}}-alpha
     - name: Pack MongoQ.AspNetCore Nuget
       run: dotnet pack src/MongoQ.AspNetCore/MongoQ.AspNetCore.csproj -c Release --no-build -p:PackageVersion=0.1.${{github.run_id}}
+      
+    - name: Publish MongoQ Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: source
+        path: src/**/bin/*.nupkg
+        
+    - name: Test Environment
+      run: |
+        echo "${{ env.GITHUB_ACTION }}"
+        echo "${{ env.GITHUB_ACTION }}"
+#    - name: Push MongoQ Nuget
+#      run: dotnet nuget push src/MongoQ/bin/Release/MongoQ.0.1.${{github.run_id}}.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
 #    - name: Push MongoQ.AspNetCore Nuget
 #      run: dotnet nuget push src/MongoQ.AspNetCore/bin/Release/MongoQ.AspNetCore.0.1.${{github.run_id}}.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
    # - name: Test
