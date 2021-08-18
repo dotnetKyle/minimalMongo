@@ -5,7 +5,7 @@ on:
     branches: [ '*' ]
 
 jobs:
-  build:
+  build-gate:
 
     runs-on: ubuntu-latest
 
