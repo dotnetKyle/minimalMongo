@@ -3,7 +3,7 @@ name: CD-Build
 on:
   push:
     # Runs on all branches so they share a github.run_number increment
-    branches: [ '*' ]
+    branches: [ stable ]
 
 jobs:
   build:
