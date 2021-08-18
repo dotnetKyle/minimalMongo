@@ -1,8 +1,8 @@
-name: CD-Build-Gate
+name: pull-request-gate
 
 on:
   pull_request:
-    branches: [ stable ]
+    branches: [ '*' ]
 
 jobs:
   build:
