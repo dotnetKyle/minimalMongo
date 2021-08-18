@@ -51,8 +51,11 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: Nugets
-    - name: Print Environment Name
-      run: echo 'Integration, Nuget Version=0.1.${{github.run_number}}-alpha'
+        
+    - name: Push MongoQ Nuget
+      run: dotnet nuget push src/MongoQ/bin/Release/MongoQ.0.1.${{github.run_id}}-alpha.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
+    - name: Push MongoQ.AspNetCore Nuget
+      run: dotnet nuget push src/MongoQ.AspNetCore/bin/Release/MongoQ.AspNetCore.0.1.${{github.run_id}}-alpha.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
 
   production:
     needs: integration
@@ -65,12 +68,9 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: Nugets
-    - name: Print Environment Name
-      run: echo 'Production, Nuget Version=0.1.${{github.run_number}}'
+        
+    - name: Push MongoQ Nuget
+      run: dotnet nuget push src/MongoQ/bin/Release/MongoQ.0.1.${{github.run_id}}.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
+    - name: Push MongoQ.AspNetCore Nuget
+      run: dotnet nuget push src/MongoQ.AspNetCore/bin/Release/MongoQ.AspNetCore.0.1.${{github.run_id}}.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
 
-#    - name: Push MongoQ Nuget
-#      run: dotnet nuget push src/MongoQ/bin/Release/MongoQ.0.1.${{github.run_id}}.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
-#    - name: Push MongoQ.AspNetCore Nuget
-#      run: dotnet nuget push src/MongoQ.AspNetCore/bin/Release/MongoQ.AspNetCore.0.1.${{github.run_id}}.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
-   # - name: Test
-   #   run: dotnet test --no-build --verbosity normal
