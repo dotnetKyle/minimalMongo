@@ -53,9 +53,9 @@ jobs:
         name: Nugets
         
     - name: Push MongoQ Nuget
-      run: dotnet nuget push src/MongoQ/bin/Release/MongoQ.0.1.${{github.run_number}}-alpha.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push /home/runner/work/mongoQ/mongoQ/MongoQ.0.1.${{github.run_number}}-alpha.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
     - name: Push MongoQ.AspNetCore Nuget
-      run: dotnet nuget push src/MongoQ.AspNetCore/bin/Release/MongoQ.AspNetCore.0.1.${{github.run_number}}-alpha.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push /home/runner/work/mongoQ/mongoQ/MongoQ.AspNetCore.0.1.${{github.run_number}}-alpha.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
 
   production:
     needs: integration
@@ -70,7 +70,7 @@ jobs:
         name: Nugets
         
     - name: Push MongoQ Nuget
-      run: dotnet nuget push src/MongoQ/bin/Release/MongoQ.0.1.${{github.run_number}}.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push /home/runner/work/mongoQ/mongoQ/MongoQ.0.1.${{github.run_number}}.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
     - name: Push MongoQ.AspNetCore Nuget
-      run: dotnet nuget push src/MongoQ.AspNetCore/bin/Release/MongoQ.AspNetCore.0.1.${{github.run_number}}.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push /home/runner/work/mongoQ/mongoQ/MongoQ.AspNetCore.0.1.${{github.run_number}}.nupkg --api-key ${{secrets.NUGETKEY}} --source https://api.nuget.org/v3/index.json
 
