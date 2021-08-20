@@ -16,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoQ.AspNetCore", "MongoQ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoQ", "MongoQ\MongoQ.csproj", "{90CE3C77-24B5-4F6D-B0C7-879A6EF0C7E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoQ.Tests", "MongoQ.Tests\MongoQ.Tests.csproj", "{A403866B-D27D-4E53-B35B-C32C23C50613}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoQ.Tests", "MongoQ.Tests\MongoQ.Tests.csproj", "{A403866B-D27D-4E53-B35B-C32C23C50613}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
