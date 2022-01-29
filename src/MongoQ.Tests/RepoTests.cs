@@ -8,20 +8,18 @@ namespace MongoQ.Tests
     [TestClass]
     public class RepoTests
     {
-        string _defaultDbName;
-        string _defaultConnString;
-        MongoDatabaseSettings _defaultDbSettings;
-        Action<ClusterBuilder> _defaultClusterConfig;
+        readonly string _defaultDbName;
+        readonly string _defaultConnString;
+        readonly MongoDatabaseSettings _defaultDbSettings;
+        readonly Action<ClusterBuilder> _defaultClusterConfig;
         public RepoTests()
         {
             // get mongoQ defaults from the framework
             _defaultDbName = MongoQConfiguration.MongoDbName;
             _defaultConnString = MongoQConfiguration.MongoDbConnString;
 
-            _defaultDbSettings = (MongoQConfiguration.MongoDbSettings != null) 
-                ? MongoQConfiguration.MongoDbSettings.Clone()
-                : null;
-            _defaultClusterConfig = (MongoQConfiguration.ClusterConfig != null) 
+            _defaultDbSettings = MongoQConfiguration.MongoDbSettings?.Clone();
+            _defaultClusterConfig = (MongoQConfiguration.ClusterConfig != null)
                 ? (Action<ClusterBuilder>)MongoQConfiguration.ClusterConfig.Clone()
                 : null;
         }
@@ -32,9 +30,7 @@ namespace MongoQ.Tests
             // reset mongoq config back to the original defaults after each test
             MongoQConfiguration.MongoDbName = _defaultDbName;
             MongoQConfiguration.MongoDbConnString = _defaultConnString;
-            MongoQConfiguration.MongoDbSettings = (_defaultDbSettings != null)
-                ? _defaultDbSettings.Clone()
-                : null;
+            MongoQConfiguration.MongoDbSettings = _defaultDbSettings?.Clone();
             MongoQConfiguration.ClusterConfig = (_defaultClusterConfig != null)
                 ? (Action<ClusterBuilder>)_defaultClusterConfig.Clone()
                 : null;
