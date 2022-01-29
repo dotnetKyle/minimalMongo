@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard21</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>dotnetKyle</Authors>
     <Description>Quickly add the MongoDB C# Driver to a dotnet project with some helpful additions to get started quicker.</Description>
     <Copyright>2021 dotnetKyle</Copyright>
@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.14.1" />
   </ItemGroup>
 
 </Project>
