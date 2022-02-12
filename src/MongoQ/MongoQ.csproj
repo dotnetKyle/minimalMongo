@@ -9,11 +9,19 @@
     <PackageProjectUrl>https://github.com/dotnetKyle/mongodb-quick-repo/blob/stable/README.md</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dotnetKyle/mongoQ</RepositoryUrl>
     <PackageTags>Mongo, MongoDB, MongoDB.Driver</PackageTags>
-    <PackageReleaseNotes>First iteration, added support for a quick repo, cluster configuration, database settings, collection settings.</PackageReleaseNotes>
+    <PackageReleaseNotes>Changed build to run .NET Standard 2.0 so it has greater compatibility.</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Version>0.0.0</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.14.1" />

@@ -10,9 +10,17 @@
     <PackageProjectUrl>https://github.com/dotnetKyle/mongodb-quick-repo/blob/stable/README.md</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dotnetKyle/mongoQ</RepositoryUrl>
     <PackageTags>Mongo, MongoDB, MongoDB.Driver, ASP.Net Core MongoDB</PackageTags>
-    <PackageReleaseNotes>First iteration, added support for a quick repo, cluster configuration, database settings, collection settings. Support for configuring in startup.cs</PackageReleaseNotes>
+    <PackageReleaseNotes>Changed build to run .NET Standard 2.0 so it has greater compatibility.</PackageReleaseNotes>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
