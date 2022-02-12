@@ -83,11 +83,15 @@ In your `Startup.cs` setup mongo in the `Startup.Configure` method using the `IA
 
 Set Database Name:
 
-    app.MongoQSetDbName("MyDatabase");
+```csharp
+app.MongoQSetDbName("MyDatabase");
+```
 
 Set Connection string:
 
-    app.MongoQSetConnString(config.GetConnectionString("myConnString"));
+```csharp
+app.MongoQSetConnString(config.GetConnectionString("myConnString"));
+```
 
 Customize the cluster:
 
