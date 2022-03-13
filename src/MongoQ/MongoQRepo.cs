@@ -44,7 +44,7 @@ namespace MongoQ
             _db = _client.GetDatabase(dbName, MongoQConfiguration.MongoDbSettings);
 
             // get the collection for this repo
-            _collection = _db.GetCollection<T>(dbName, mongoCollectionSettings);
+            _collection = _db.GetCollection<T>(collectionName, mongoCollectionSettings);
         }
     }
 }

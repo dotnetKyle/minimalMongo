@@ -110,5 +110,37 @@ namespace MongoQ.Tests
                 var repo = new MockRepoWithoutCollectionName();
             });
         }
+
+        [TestMethod]
+        public void EnsureCollectionNameGetSetRight()
+        {
+            // Arrange
+            MongoQConfiguration.AddMongoQDbName("fakeDbName");
+            MongoQConfiguration.AddMongoQConnectionString("mongodb://mongodb0.example.com:27017");
+
+            var m = new MockRepo();
+
+            var coll = m.GetCollection();
+
+            var collName = coll.CollectionNamespace.CollectionName;
+            
+            Assert.AreEqual("mockEntities", collName, "Collection name was set wrong");
+        }
+
+        [TestMethod]
+        public void EnsureDatabaseNameGetSetRight()
+        {
+            // Arrange
+            MongoQConfiguration.AddMongoQDbName("fakeDbName");
+            MongoQConfiguration.AddMongoQConnectionString("mongodb://mongodb0.example.com:27017");
+
+            var m = new MockRepo();
+
+            var coll = m.GetCollection();
+
+            var dbName = coll.CollectionNamespace.DatabaseNamespace.DatabaseName;
+
+            Assert.AreEqual("fakeDbName", dbName, "dbName was set wrong");
+        }
     }
 }
