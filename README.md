@@ -93,7 +93,7 @@ Set Connection string:
 app.MongoQSetConnString(config.GetConnectionString("myConnString"));
 ```
 
-Customize the cluster:
+Optionally, customize the cluster:
 
 ```csharp
 app.MongoQConfigureCluster(options =>
