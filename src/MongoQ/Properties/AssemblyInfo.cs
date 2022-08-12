@@ -16,4 +16,4 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("082dca22-cd3f-4dc5-a092-0167afa809a6")]
 
-[assembly: InternalsVisibleTo("MongoQ.Tests")]
+[assembly: InternalsVisibleTo("MinimalMongo.Tests")]

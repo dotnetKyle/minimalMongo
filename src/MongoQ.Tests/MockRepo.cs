@@ -1,8 +1,8 @@
 ﻿using MongoDB.Driver;
 
-namespace MongoQ.Tests
+namespace MinimalMongo.Tests
 {
-    internal class MockRepo : MongoQRepo<MockEntity>
+    internal class MockRepo : MinimalMongoRepo<MockEntity>
     {
         public MockRepo() : base("mockEntities") 
         { }

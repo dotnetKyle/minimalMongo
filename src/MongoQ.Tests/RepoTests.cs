@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MongoDB.Driver.Core.Configuration;
 using MongoDB.Driver;
 
-namespace MongoQ.Tests
+namespace MinimalMongo.Tests
 {
     [TestClass]
     public class RepoTests
@@ -14,24 +14,24 @@ namespace MongoQ.Tests
         readonly Action<ClusterBuilder> _defaultClusterConfig;
         public RepoTests()
         {
-            // get mongoQ defaults from the framework
-            _defaultDbName = MongoQConfiguration.MongoDbName;
-            _defaultConnString = MongoQConfiguration.MongoDbConnString;
+            // get MinimalMongo defaults from the framework
+            _defaultDbName = MinimalMongoConfiguration.MongoDbName;
+            _defaultConnString = MinimalMongoConfiguration.MongoDbConnString;
 
-            _defaultDbSettings = MongoQConfiguration.MongoDbSettings?.Clone();
-            _defaultClusterConfig = (MongoQConfiguration.ClusterConfig != null)
-                ? (Action<ClusterBuilder>)MongoQConfiguration.ClusterConfig.Clone()
+            _defaultDbSettings = MinimalMongoConfiguration.MongoDbSettings?.Clone();
+            _defaultClusterConfig = (MinimalMongoConfiguration.ClusterConfig != null)
+                ? (Action<ClusterBuilder>)MinimalMongoConfiguration.ClusterConfig.Clone()
                 : null;
         }
 
         [TestCleanup]
         public void TestCleanup()
         {
-            // reset mongoq config back to the original defaults after each test
-            MongoQConfiguration.MongoDbName = _defaultDbName;
-            MongoQConfiguration.MongoDbConnString = _defaultConnString;
-            MongoQConfiguration.MongoDbSettings = _defaultDbSettings?.Clone();
-            MongoQConfiguration.ClusterConfig = (_defaultClusterConfig != null)
+            // reset MinimalMongo config back to the original defaults after each test
+            MinimalMongoConfiguration.MongoDbName = _defaultDbName;
+            MinimalMongoConfiguration.MongoDbConnString = _defaultConnString;
+            MinimalMongoConfiguration.MongoDbSettings = _defaultDbSettings?.Clone();
+            MinimalMongoConfiguration.ClusterConfig = (_defaultClusterConfig != null)
                 ? (Action<ClusterBuilder>)_defaultClusterConfig.Clone()
                 : null;
         }
@@ -40,7 +40,7 @@ namespace MongoQ.Tests
         public void NoConfiguration_ThrowsException()
         {
             Assert.ThrowsException<ArgumentNullException>(() => {
-                // setup mock repo without creating the mongoq configuration first
+                // setup mock repo without creating the MinimalMongo configuration first
                 var repo = new MockRepo();
             });
         }
@@ -49,7 +49,7 @@ namespace MongoQ.Tests
         public void NoDbName_ThrowsException()
         {
             // Arrange
-            MongoQConfiguration.MongoDbConnString = "mongodb://mongodb0.example.com:27017";
+            MinimalMongoConfiguration.MongoDbConnString = "mongodb://mongodb0.example.com:27017";
 
             Assert.ThrowsException<ArgumentNullException>(() => {
                 // Act
@@ -61,11 +61,11 @@ namespace MongoQ.Tests
         public void NoConnString_ThrowsException()
         {
             // Arrange
-            MongoQConfiguration.MongoDbName = "fakeDbName";
+            MinimalMongoConfiguration.MongoDbName = "fakeDbName";
 
             Assert.ThrowsException<ArgumentNullException>(() => {
                 // Act
-                // setup mock repo without creating the mongoq configuration
+                // setup mock repo without creating the MinimalMongo configuration
                 var repo = new MockRepo();
             });
         }
@@ -74,8 +74,8 @@ namespace MongoQ.Tests
         public void WithConfigMinimum_NoExeptions()
         {
             // Arrange
-            MongoQConfiguration.AddMongoQDbName("fakeDbName");
-            MongoQConfiguration.AddMongoQConnectionString("mongodb://mongodb0.example.com:27017");
+            MinimalMongoConfiguration.AddMinimalMongoDbName("fakeDbName");
+            MinimalMongoConfiguration.AddMinimalMongoConnectionString("mongodb://mongodb0.example.com:27017");
 
             // Act
             var repo = new MockRepo();
@@ -85,8 +85,8 @@ namespace MongoQ.Tests
         public void RepoWithNullCollectionName_ThrowsException()
         {
             // Arrange
-            MongoQConfiguration.AddMongoQDbName("fakeDbName");
-            MongoQConfiguration.AddMongoQConnectionString("mongodb://mongodb0.example.com:27017");
+            MinimalMongoConfiguration.AddMinimalMongoDbName("fakeDbName");
+            MinimalMongoConfiguration.AddMinimalMongoConnectionString("mongodb://mongodb0.example.com:27017");
             MockRepoWithoutCollectionName.CollectionName = null;
 
             Assert.ThrowsException<ArgumentNullException>(() =>
@@ -100,8 +100,8 @@ namespace MongoQ.Tests
         public void RepoWithEmptyCollectionName_ThrowsException()
         {
             // Arrange
-            MongoQConfiguration.AddMongoQDbName("fakeDbName");
-            MongoQConfiguration.AddMongoQConnectionString("mongodb://mongodb0.example.com:27017");
+            MinimalMongoConfiguration.AddMinimalMongoDbName("fakeDbName");
+            MinimalMongoConfiguration.AddMinimalMongoConnectionString("mongodb://mongodb0.example.com:27017");
             MockRepoWithoutCollectionName.CollectionName = "";
 
             Assert.ThrowsException<ArgumentNullException>(() =>
@@ -115,8 +115,8 @@ namespace MongoQ.Tests
         public void EnsureCollectionNameGetSetRight()
         {
             // Arrange
-            MongoQConfiguration.AddMongoQDbName("fakeDbName");
-            MongoQConfiguration.AddMongoQConnectionString("mongodb://mongodb0.example.com:27017");
+            MinimalMongoConfiguration.AddMinimalMongoDbName("fakeDbName");
+            MinimalMongoConfiguration.AddMinimalMongoConnectionString("mongodb://mongodb0.example.com:27017");
 
             var m = new MockRepo();
 
@@ -131,8 +131,8 @@ namespace MongoQ.Tests
         public void EnsureDatabaseNameGetSetRight()
         {
             // Arrange
-            MongoQConfiguration.AddMongoQDbName("fakeDbName");
-            MongoQConfiguration.AddMongoQConnectionString("mongodb://mongodb0.example.com:27017");
+            MinimalMongoConfiguration.AddMinimalMongoDbName("fakeDbName");
+            MinimalMongoConfiguration.AddMinimalMongoConnectionString("mongodb://mongodb0.example.com:27017");
 
             var m = new MockRepo();
 

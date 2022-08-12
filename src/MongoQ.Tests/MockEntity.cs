@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace MongoQ.Tests
+namespace MinimalMongo.Tests
 {
     internal class MockEntity
     {

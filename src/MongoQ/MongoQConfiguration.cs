@@ -2,9 +2,9 @@
 using MongoDB.Driver.Core.Configuration;
 using System;
 
-namespace MongoQ
+namespace MinimalMongo
 {
-    public static class MongoQConfiguration
+    public static class MinimalMongoConfiguration
     {
         /// <summary>
         /// From MongoDB docs: the ClusterConfigurator property is a delegate and 
@@ -17,14 +17,14 @@ namespace MongoQ
         internal static string MongoDbName { get; set; }
         internal static string MongoDbConnString { get; set; }
 
-        public static void AddMongoQDbName(string dbName)
+        public static void AddMinimalMongoDbName(string dbName)
         {
             if (string.IsNullOrWhiteSpace(dbName))
                 throw new ArgumentNullException(nameof(dbName), "MongoDB Database name cannot be blank.");
 
             MongoDbName = dbName;
         }
-        public static void AddMongoQConnectionString(string connstring)
+        public static void AddMinimalMongoConnectionString(string connstring)
         {
             if (string.IsNullOrWhiteSpace(connstring))
                 throw new ArgumentNullException(nameof(connstring), "MongoDB Connection String cannot be blank.");

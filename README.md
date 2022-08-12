@@ -1,22 +1,20 @@
-# MongoQ
-
-The Q stands for quick
+# MinimalMongo
 
 Quickly add the MongoDB C# Driver to a dotnet 
 project with some helpful additions to get 
-started quicker.
+started faster.
 
 ## Usage:
 
-Creating a repository is very easy with MongoQ. 
-MongoQ will setup your collection for you in a 
+Creating a repository is very easy with MinimalMongo. 
+MinimalMongo will setup your collection for you in a 
 standard, repeatable way so you can focus on your 
 repository code.
 
 ```csharp
-using MongoQ;
+using MinimalMongo;
     
-public class MyRepo : MongoQRepo<MyEntity>
+public class MyRepo : MinimalMongoRepo<MyEntity>
 {
     public MyRepo() : base("collectionName") { }
 
@@ -37,11 +35,11 @@ Add the Nuget Package.
 
 For ASP.NET:
 
-`Install-Package MongoQ.AspNetCore`
+`Install-Package MinimalMongo.AspNetCore`
 
 Generic C#:
 
-`Install-Package MongoQ`
+`Install-Package MinimalMongo`
 
 ### First, Configure your mongo database
 
@@ -49,7 +47,7 @@ See below, configuration is different per-environment to conform to conventions 
 
 ### Create a Repo
 
-Inherit your repository from MongoQRepo<T> where T is the class of your entity.
+Inherit your repository from MinimalMongoRepo<T> where T is the class of your entity.
 
 ```csharp
 using MongoDB.Bson;
@@ -62,7 +60,7 @@ public class MyEntity
     [BsonId]
     public ObjectId Id { get; set; }
 }
-public class MyRepo : MongoQ.MongoQRepo<MyEntity>
+public class MyRepo : MinimalMongo.MinimalMongoRepo<MyEntity>
 {
     public MyRepo() : base("collectionName") { }
 
@@ -84,19 +82,19 @@ In your `Startup.cs` setup mongo in the `Startup.Configure` method using the `IA
 Set Database Name:
 
 ```csharp
-app.MongoQSetDbName("MyDatabase");
+app.MinimalMongoSetDbName("MyDatabase");
 ```
 
 Set Connection string:
 
 ```csharp
-app.MongoQSetConnString(config.GetConnectionString("myConnString"));
+app.MinimalMongoSetConnString(config.GetConnectionString("myConnString"));
 ```
 
 Customize the cluster:
 
 ```csharp
-app.MongoQConfigureCluster(options =>
+app.MinimalMongoConfigureCluster(options =>
 {
     // configure the connection pool
     options.ConfigureConnectionPool(
@@ -128,7 +126,7 @@ app.MongoQConfigureCluster(options =>
 Customize default database settings:
 
 ```csharp
-app.MongoQConfigureDbSettings(options =>
+app.MinimalMongoConfigureDbSettings(options =>
 {
     options.ReadPreference = ReadPreference.Nearest;
     options.WriteConcern = WriteConcern.WMajority;
