@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MongoQ.AspNetCore\MinimalMongo.AspNetCore.csproj" />
+    <ProjectReference Include="..\MinimalMongo.AspNetCore\MinimalMongo.AspNetCore.csproj" />
   </ItemGroup>
 
 </Project>

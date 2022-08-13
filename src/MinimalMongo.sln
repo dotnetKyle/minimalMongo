@@ -11,11 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalMongo.AspNetCore", "MongoQ.AspNetCore\MinimalMongo.AspNetCore.csproj", "{1882BF81-2D8A-4033-B850-CECE39DC09EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalMongo.AspNetCore", "MinimalMongo.AspNetCore\MinimalMongo.AspNetCore.csproj", "{1882BF81-2D8A-4033-B850-CECE39DC09EB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalMongo", "MongoQ\MinimalMongo.csproj", "{90CE3C77-24B5-4F6D-B0C7-879A6EF0C7E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalMongo", "MinimalMongo\MinimalMongo.csproj", "{90CE3C77-24B5-4F6D-B0C7-879A6EF0C7E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalMongo.Tests", "MongoQ.Tests\MinimalMongo.Tests.csproj", "{A403866B-D27D-4E53-B35B-C32C23C50613}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalMongo.Tests", "MinimalMongo.Tests\MinimalMongo.Tests.csproj", "{A403866B-D27D-4E53-B35B-C32C23C50613}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
