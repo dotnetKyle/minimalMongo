@@ -91,7 +91,18 @@ Set Connection string:
 app.MinimalMongoSetConnString(config.GetConnectionString("myConnString"));
 ```
 
-Customize the cluster:
+Customize default database settings:
+
+```csharp
+app.MongoQConfigureDbSettings(options =>
+{
+    options.ReadPreference = ReadPreference.Nearest;
+    options.WriteConcern = WriteConcern.WMajority;
+    options.ReadConcern = ReadConcern.Majority;
+});
+```
+    
+Optionally, customize the cluster:
 
 ```csharp
 app.MinimalMongoConfigureCluster(options =>
@@ -120,16 +131,5 @@ app.MinimalMongoConfigureCluster(options =>
         System.Diagnostics.Debug.WriteLine("CMD Start:" + e.Command?.ToJson());
         System.Diagnostics.Debug.WriteLine("CMD Name:" + e.CommandName);
     });
-});
-```
-    
-Customize default database settings:
-
-```csharp
-app.MinimalMongoConfigureDbSettings(options =>
-{
-    options.ReadPreference = ReadPreference.Nearest;
-    options.WriteConcern = WriteConcern.WMajority;
-    options.ReadConcern = ReadConcern.Majority;
 });
 ```
