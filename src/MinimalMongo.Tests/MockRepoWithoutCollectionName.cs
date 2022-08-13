@@ -1,6 +1,6 @@
-﻿namespace MongoQ.Tests
+﻿namespace MinimalMongo.Tests
 {
-    internal class MockRepoWithoutCollectionName : MongoQRepo<MockEntity>
+    internal class MockRepoWithoutCollectionName : MinimalMongoRepo<MockEntity>
     {
         public static string CollectionName = null;
 

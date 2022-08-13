@@ -3,18 +3,18 @@ using MongoDB.Driver.Core.Configuration;
 using System;
 using MongoDB.Driver;
 
-namespace MongoQ.AspNetCore
+namespace MinimalMongo.AspNetCore
 {
-    public static class AspNetMongoQExtensions
+    public static class AspNetMinimalMongoExtensions
     {
         /// <summary>
         /// Configure your mongodb cluster
         /// </summary>
         /// <param name="app">Extension hangs off of the IApplicationBuilder to conform to ASP.NET Startup.cs conventions</param>
         /// <param name="options">This action will run when dependency injection is creating a new instance of a MongoRepo</param>
-        public static IApplicationBuilder MongoQConfigureCluster(this IApplicationBuilder app, Action<ClusterBuilder> options)
+        public static IApplicationBuilder MinimalMongoConfigureCluster(this IApplicationBuilder app, Action<ClusterBuilder> options)
         {
-            MongoQConfiguration.ReplaceClusterConfiguration(options);
+            MinimalMongoConfiguration.ReplaceClusterConfiguration(options);
 
             return app;
         }
@@ -24,9 +24,9 @@ namespace MongoQ.AspNetCore
         /// </summary>
         /// <param name="app">Extension hangs off of the IApplicationBuilder to conform to ASP.NET Startup.cs conventions</param>
         /// <param name="options">This action will run when dependency injection is creating a new instance of a MongoRepo</param>
-        public static IApplicationBuilder MongoQConfigureDbSettings(this IApplicationBuilder app, Action<MongoDatabaseSettings> options)
+        public static IApplicationBuilder MinimalMongoConfigureDbSettings(this IApplicationBuilder app, Action<MongoDatabaseSettings> options)
         {
-            MongoQConfiguration.ReplaceDefaultDbSettings(options);
+            MinimalMongoConfiguration.ReplaceDefaultDbSettings(options);
 
             return app;
         }
@@ -36,9 +36,9 @@ namespace MongoQ.AspNetCore
         /// </summary>
         /// <param name="app">Extension hangs off of the IApplicationBuilder to conform to ASP.NET Startup.cs conventions</param>
         /// <param name="dbName">The name of your mongodb database</param>
-        public static IApplicationBuilder MongoQSetDbName(this IApplicationBuilder app, string dbName)
+        public static IApplicationBuilder MinimalMongoSetDbName(this IApplicationBuilder app, string dbName)
         {
-            MongoQConfiguration.AddMongoQDbName(dbName);
+            MinimalMongoConfiguration.AddMinimalMongoDbName(dbName);
 
             return app;
         }
@@ -48,9 +48,9 @@ namespace MongoQ.AspNetCore
         /// </summary>
         /// <param name="app">Extension hangs off of the IApplicationBuilder to conform to ASP.NET Startup.cs conventions</param>
         /// <param name="connString">The connection string for your mongodb database</param>
-        public static IApplicationBuilder MongoQSetConnString(this IApplicationBuilder app, string connString)
+        public static IApplicationBuilder MinimalMongoSetConnString(this IApplicationBuilder app, string connString)
         {
-            MongoQConfiguration.AddMongoQConnectionString(connString);
+            MinimalMongoConfiguration.AddMinimalMongoConnectionString(connString);
 
             return app;
         }

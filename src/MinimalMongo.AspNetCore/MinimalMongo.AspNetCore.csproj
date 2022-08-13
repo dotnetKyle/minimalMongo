@@ -5,10 +5,10 @@
     <Version>0.0.1</Version>
     <Authors>dotnetKyle</Authors>
     <Description>Quickly add the MongoDB C# Driver to an ASP.NET project with some helpful additions to get started quicker.</Description>
-    <Product>MongoQ for ASP.Net Core</Product>
+    <Product>MinimalMongo for ASP.Net Core</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/dotnetKyle/mongodb-quick-repo/blob/stable/README.md</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/dotnetKyle/mongoQ</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/dotnetKyle/MinimalMongo#README.md</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/dotnetKyle/MinimalMongo</RepositoryUrl>
     <PackageTags>Mongo, MongoDB, MongoDB.Driver, ASP.Net Core MongoDB</PackageTags>
     <PackageReleaseNotes>Changed build to run .NET Standard 2.0 so it has greater compatibility.</PackageReleaseNotes>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MongoQ\MongoQ.csproj" />
+    <ProjectReference Include="..\MinimalMongo\MinimalMongo.csproj" />
   </ItemGroup>
 
 </Project>
