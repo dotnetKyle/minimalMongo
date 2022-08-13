@@ -16,13 +16,13 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore src/MongoQ.sln
+      run: dotnet restore src/MinimalMongo.sln
 
-    - name: Build MongoQ
-      run: dotnet build src/MongoQ/MongoQ.csproj -c Release --no-restore -f netstandard2.0
+    - name: Build MinimalMongo
+      run: dotnet build src/MinimalMongo/MinimalMongo.csproj -c Release --no-restore -f netstandard2.0
 
-    - name: Build MongoQ.AspNetCore
-      run: dotnet build src/MongoQ.AspNetCore/MongoQ.AspNetCore.csproj -c Release --no-restore -f netstandard2.0
+    - name: Build MinimalMongo.AspNetCore
+      run: dotnet build src/MinimalMongo.AspNetCore/MinimalMongo.AspNetCore.csproj -c Release --no-restore -f netstandard2.0
       
     - name: Test
-      run: dotnet test src/MongoQ.Tests/MongoQ.Tests.csproj -c Release
+      run: dotnet test src/MinimalMongo.Tests/MinimalMongo.Tests.csproj -c Release
